@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson2</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        //Урок 2. Задание 4
+
+        /**
+         * /@param {any} - первое значение
+         * /@param {any} - второе значение
+         * проверяет, являются ли введённые значения числами
+         */
+        function checkValues(a,b,operation){
+        if(isNaN(a)){
+            alert("Некорректно введено первое число");
+            return false;
+        }
+        else if(isNaN(b)){
+            alert("Некорректно введено второе число");
+            return false;
+        }
+        if((operation != "сложение")&&(operation != "вычитание")&&(operation != "умножение")&&(operation != "деление")){
+            alert("Некорректно выбрано действие");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - сумма двух чисел
+         */
+        function sum(a,b){
+            return a+b;
+        }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - разность двух чисел
+         */
+         function deduct(a,b){
+            return a-b;
+        }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - произведение двух чисел
+         */
+         function multiply(a,b){
+            return a*b;
+        }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - результат деления двух чисел
+         */
+         function divide(a,b){
+            return a/b;
+        }
+
+        /**
+         * /@param {number} a - первое число
+         * /@param {number} b - второе число
+         * /@param {string} operation - действие
+         * /@returns {number} - результат действия
+         */
+        function mathOperation(a,b,operation){
+            if(checkValues(a,b,operation) == false){
+                return;
+            }
+            switch (operation){
+            case "сложение":
+                result = sum(a,b);
+                alert("Сумма двух чисел равна " + result);
+                return result;
+            case "вычитание":
+                result = deduct(a,b);
+                alert("Разность первого и второго числа равна " + result);
+                return result;
+            
+            case "умножение":
+                result = multiply(a,b);
+                alert("Произведение двух чисел равно " + result);
+                return result;
+            
+            case "деление":
+                result = divide(a,b);
+                alert("Результат деление первого числа на второе равен " + result);
+                return result;   
+        }
+        }
+
+        //Запрос ввода двух чисел и выбора действия
+        let a = +prompt("Введите первое число");
+        let b = +prompt("Введите второе число");
+        let operation = prompt("Выберите действие (сложение, вычитание, умножение, деление");
+        let result = null;
+        //вывод результатов арифметических действий (если операдны являются числами и действие выбрано корректно)
+        mathOperation(a,b,operation);
+    </script>
+</body>
+</html>

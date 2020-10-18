@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson2</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        //Урок 2. Задание 4
+
+        /**
+         * /@param {any} - первое значение
+         * /@param {any} - второе значение
+         * /@returns {boolean} - проверяет, являются ли введённые значения числами
+         */
+        function checkNumbers(a,b){
+        if(isNaN(a)){
+            alert("Некорректно введено первое число");
+            return false;
+        }
+        else if(isNaN(b)){
+            alert("Некорректно введено второе число");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - сумма двух чисел
+         */
+        function sum(a,b){
+            if(checkNumbers(a,b) == false){
+                return;
+            }
+            else{
+            return a+b;
+            }
+        }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - разность двух чисел
+         */
+         function deduct(a,b){
+            if(checkNumbers(a,b) == false){
+                return;
+            }
+            else{
+            return a-b;
+            }
+        }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - произведение двух чисел
+         */
+         function multiply(a,b){
+            if(checkNumbers(a,b) == false){
+                return;
+            }
+            else{
+            return a*b;
+            }
+        }
+
+        /**
+         * @param {number} a - первое число
+         * @param {number} b - второе число
+         * @returns {number} - результат деления двух чисел
+         */
+         function divide(a,b){
+            if(checkNumbers(a,b) == false){
+                return;
+            }
+            else{
+            return a/b;
+            }
+        }
+
+        //Запрос ввода двух чисел
+        let a = +prompt("Введите первое число");
+        let b = +prompt("Введите второе число");
+        //вывод результатов арифметических действий (если операдны являются числами)
+        if(checkNumbers(a,b) == true){
+        alert("Сумма первого и второго числа равна " + sum(a,b));
+        alert("Разность первого и второго числа равна " + deduct(a,b));
+        alert("Произведение первого и второго числа равно " + multiply(a,b));
+        alert("Результат деления первого числа на второе равен " + divide(a,b)); 
+        }  
+    </script>
+</body>
+</html>
