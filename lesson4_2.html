@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson 4</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        //Решение в стиле es5
+
+        //функция-конструктор
+        function Product1 (name, price) {
+            this.name = name;
+            this.price = price;
+        }
+        //метод, объявляемый в прототипе
+        Product1.prototype.make25PercentDiscount = function(){
+            this.price *= 0.75;
+        };
+        //создаём массив объектов с помощью функции-конструктора и оператора new
+        let products1 = [
+            new Product1('продукт1_1', 400),
+            new Product1('продукт1_2', 200),
+            new Product1('продукт1_3', 100)
+        ];
+        //вызываем метод make25PercentDiscount для каждого объекта массива
+        for (let product1 of products1){
+            product1.make25PercentDiscount();
+        }
+        //выводим в консоль новый массив, получившийся после вызова функции
+        console.log(products1);
+
+        //решение в стиле es6
+        
+        //функция-конструктор и объявление методов
+        class Product2{
+            constructor(name, price){
+                this.name = name;
+                this.price = price;
+            }
+            make25PercentDiscount(){
+                this.price *= 0.75
+            }
+        }
+        //создаём массив объектов с помощью функции-конструктора и оператора new
+        let products2 = [
+            new Product2('продукт2_1', 800),
+            new Product2('продукт2_2', 600),
+            new Product2('продукт2_3', 300)
+        ];
+        //вызываем метод make25PercentDiscount для каждого объекта массива
+        for (let product2 of products2){
+            product2.make25PercentDiscount();
+        }
+        //выводим в консоль новый массив, получившийся после вызова функции
+        console.log(products2);
+    </script>
+</body>
+</html>

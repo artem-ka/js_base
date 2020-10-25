@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson 4</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        //решение в стиле es5
+
+        //функция-конструктор Post1
+        function Post1 (author, text, date){
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+        //метод в прототипе
+        Post1.prototype.edit = function(text){
+            this.text = text;
+        }
+        //создание объекта и вызов метода edit
+        let post1_1 = new Post1('user1', '', '25.10.2020');
+        post1_1.edit('hello');
+        console.log(post1_1);
+
+        //функция-конструктор AttachedPost1 наследует свойства Post1
+        function AttachedPost1(author, text, date, highlighted){
+            Post1.call(this, author, text, date);
+            this.highlighted = false;
+        }
+        //наследование методов
+        AttachedPost1.prototype = Object.create(Post1.prototype);
+        AttachedPost1.prototype.constructor = AttachedPost1;
+        //собственный метод
+        AttachedPost1.prototype.textHighlighted = function(){
+            this.highlighted = true;
+        }
+        //создание объекта и вызов метода highlighted
+        let attachedPost1_1 = new AttachedPost1('user2', 'hi', '25.10.2020');
+        attachedPost1_1.textHighlighted();
+        console.log(attachedPost1_1);
+
+        //решение в стиле es6
+
+        //функция-конструктор Post2 и метод edit
+        class Post2 {
+            constructor(author, text, date){
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            edit(text){
+                this.text = text;
+            }
+        }
+
+        //создание объекта и вызов метода edit
+        let post1_2 = new Post1('user3', '', '25.10.2020');
+        post1_2.edit('hello hello');
+        console.log(post1_2);
+
+        //функция-конструктор AttachedPost2 наследует свойства Post2, плюс имеет свойство highlighted и метод textHighlighted
+        class AttachedPost2 extends Post2 {
+            constructor(author, text, date, highlighted){
+                super(author, text, date);
+                this.highlighted = false;
+            }
+                textHighlighted() {
+                    this.highlighted = true;
+                }
+        }
+        //создание объекта и вызов метода highlighted
+        let attachedPost1_2 = new AttachedPost2('user4', 'hi hi', '25.10.2020');
+        attachedPost1_2.textHighlighted();
+        console.log(attachedPost1_2);
+    </script>
+</body>
+</html>

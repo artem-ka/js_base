@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson 4</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        //Функция-конструктор объекта из числа
+        function NumToObj(num){
+            this.hundreds = Math.floor(num/100);
+            this.tens = Math.floor((num%100)/10);
+            this.units = Math.floor(num%10);
+        }
+        //Функция, проверяющая условия 
+        //и вызывающая функцию-конструктор, 
+        //преобразующую число в объект
+        function checkNumMakeObj(num){
+            //проверка, число ли передано
+            if(isNaN(num)){
+                console.log("Передано не число");
+                return {}
+            }
+            //проверка диапазона
+            else if(num<0||num>=1000){
+                console.log("Число вне диапазона");
+                return {};
+            }
+            //проверка, целое ли число
+            else if(!Number.isInteger(num)){
+                console.log("Число не целое");
+                return {};
+            }
+            //если все условия выполнены
+            else{
+                let objFromNum = new NumToObj(num);
+                console.log(objFromNum);
+            }
+        }
+
+        //получение числа и вызов функции, преобразующей его в объект
+        let num = Number(prompt("Введите число от 0 до 999"));
+        checkNumMakeObj(num);
+    </script>
+</body>
+</html>
